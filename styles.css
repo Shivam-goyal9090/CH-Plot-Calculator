@@ -72,6 +72,14 @@ h1 {
   line-height: 1.5;
 }
 
+.disclaimer {
+  margin: 12px 0 0;
+  color: #b3261e;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
 form {
   padding: 24px 28px 10px;
 }
