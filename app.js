@@ -137,12 +137,12 @@ function renderResult(area, rate, maintenance) {
   const adjustedRate = calculateAdjustedRate(rate);
   const plotPrice = area * adjustedRate;
   const totalPrice = plotPrice + maintenance;
-  const steps = buildSteps(area, rate, adjustedRate, maintenance, plotPrice, totalPrice);
+  //const steps = buildSteps(area, rate, adjustedRate, maintenance, plotPrice, totalPrice);
 
   adjustedRateOutput.textContent = `${formatAmount(adjustedRate)} / sq ft`;
   calculatedAreaOutput.textContent = `${formatAmount(area)} sq ft`;
   totalPriceOutput.textContent = formatAmount(totalPrice);
-  stepsList.innerHTML = steps.map((step) => `<li>${step}</li>`).join("");
+  stepsList.innerHTML = "";
   resultPanel.classList.remove("is-empty");
 }
 
