@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1a73e8" />
+    <title>Plot Price Calculator</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="form-surface" aria-labelledby="app-title">
+        <div class="title-block">
+          <p class="eyebrow">Real estate calculator</p>
+          <h1 id="app-title">Plot Price Calculator</h1>
+          <p class="intro">Enter plot details and get the adjusted rate and total price instantly.</p>
+        </div>
+
+        <form id="calculator-form" novalidate>
+          <div class="area-choice">
+            <div class="field-group">
+              <label for="plot-length">Length</label>
+              <div class="input-wrap">
+                <input
+                  id="plot-length"
+                  name="plotLength"
+                  type="number"
+                  inputmode="decimal"
+                  min="0"
+                  step="0.01"
+                  placeholder="Example: 50"
+                  aria-describedby="dimension-help dimension-error"
+                />
+                <span>ft</span>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="plot-breadth">Breadth</label>
+              <div class="input-wrap">
+                <input
+                  id="plot-breadth"
+                  name="plotBreadth"
+                  type="number"
+                  inputmode="decimal"
+                  min="0"
+                  step="0.01"
+                  placeholder="Example: 30"
+                  aria-describedby="dimension-help dimension-error"
+                />
+                <span>ft</span>
+              </div>
+            </div>
+
+            <div class="or-divider" aria-hidden="true">or</div>
+
+            <div class="field-group">
+              <label for="plot-area">Plot Area</label>
+              <div class="input-wrap">
+                <input
+                  id="plot-area"
+                  name="plotArea"
+                  type="number"
+                  inputmode="decimal"
+                  min="0"
+                  step="0.01"
+                  placeholder="Example: 1500"
+                  aria-describedby="area-help area-error"
+                />
+                <span>sq ft</span>
+              </div>
+            </div>
+            <p id="dimension-help" class="help-text area-helper">Enter length and breadth, or enter the total plot area directly.</p>
+            <p id="dimension-error" class="error-text area-helper" aria-live="polite"></p>
+            <p id="area-help" class="help-text area-helper">Rates are calculated per square foot.</p>
+            <p id="area-error" class="error-text" aria-live="polite"></p>
+          </div>
+
+          <div class="field-group">
+            <label for="base-rate">Base Rate</label>
+            <div class="input-wrap">
+              <input
+                id="base-rate"
+                name="baseRate"
+                type="number"
+                inputmode="decimal"
+                min="0"
+                step="0.01"
+                placeholder="Example: 1000"
+                aria-describedby="rate-help rate-error"
+              />
+              <span>per sq ft</span>
+            </div>
+            <p id="rate-help" class="help-text">Enter the standard rate before plot modifiers.</p>
+            <p id="rate-error" class="error-text" aria-live="polite"></p>
+          </div>
+
+          <div class="field-group">
+            <label for="maintenance">Maintenance</label>
+            <div class="input-wrap">
+              <input
+                id="maintenance"
+                name="maintenance"
+                type="number"
+                inputmode="decimal"
+                min="0"
+                step="0.01"
+                placeholder="Example: 25000"
+                aria-describedby="maintenance-help maintenance-error"
+              />
+              <span>flat amount</span>
+            </div>
+            <p id="maintenance-help" class="help-text">Added after the adjusted plot price. Leave blank if not applicable.</p>
+            <p id="maintenance-error" class="error-text" aria-live="polite"></p>
+          </div>
+
+          <fieldset class="option-group">
+            <legend>Special Attributes</legend>
+            <label class="checkbox-row">
+              <input id="road-facing" type="checkbox" name="roadFacing" />
+              <span class="box"></span>
+              <span>
+                <strong>Road Facing</strong>
+                <small>Adds 100 to the base rate first</small>
+              </span>
+            </label>
+
+            <label class="checkbox-row">
+              <input id="corner-plot" type="checkbox" name="cornerPlot" />
+              <span class="box"></span>
+              <span>
+                <strong>Corner Plot</strong>
+                <small>Adds 10% after road-facing adjustment</small>
+              </span>
+            </label>
+
+            <label class="checkbox-row">
+              <input id="garden-facing" type="checkbox" name="gardenFacing" />
+              <span class="box"></span>
+              <span>
+                <strong>Garden Facing</strong>
+                <small>Adds 5% after corner adjustment</small>
+              </span>
+            </label>
+          </fieldset>
+
+          <div class="actions">
+            <button class="primary-button" type="submit">Calculate</button>
+            <button class="secondary-button" type="reset">Clear</button>
+          </div>
+        </form>
+
+        <section id="result-panel" class="result-panel is-empty" aria-live="polite">
+          <div>
+            <p class="result-label">Final Adjusted Rate</p>
+            <p id="adjusted-rate" class="result-value">--</p>
+          </div>
+          <div>
+            <p class="result-label">Calculated Area</p>
+            <p id="calculated-area" class="result-value">--</p>
+          </div>
+          <div class="total-block">
+            <p class="result-label">Final Price</p>
+            <p id="total-price" class="total-value">--</p>
+          </div>
+          <ol id="calculation-steps" class="steps-list" aria-label="Calculation steps"></ol>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

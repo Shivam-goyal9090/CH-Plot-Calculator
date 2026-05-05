@@ -1,0 +1,9 @@
+{
+  "name": "Plot Price Calculator",
+  "short_name": "Plot Price",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f5f7fb",
+  "theme_color": "#1a73e8",
+  "description": "Fast plot price calculator for real estate professionals."
+}
